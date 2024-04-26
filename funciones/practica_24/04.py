@@ -1,9 +1,9 @@
-#crear una funcion que sume dos numeros
+ #crear una funcion que sume dos numeros
 
 
 def suma (num1,num2):
     resutado = num1+num2
-    return num1+num2
+    return resutado
 resutado_suma= suma(220,10)
 print(resutado_suma)
 
@@ -42,7 +42,7 @@ suma_bucle()
 # #TODO:  enumerate ==> es una funcion en python que e utiliza para enumerar elementosde una secuencia (lista,tuplas,etc),mientras los recorre en un bucle. enumerate toma dos parametros: la secuencia que se quiere sumar y opcionalmente el indice inicial,devuelve un objeto enumerado que produce tuplas que  contiene un contador y un elemento de la secuenco
 # frutas=["banana","pomelo","uva","mandarina"]
 # for indice,frutas in enumerate(frutas,start=1):
-#     print(f"{indice}: {frutas}: ")
+#     print(f"{indice}: {frutas} ")
 #lo que se solicita es que guarden todos los resultados de la suma y mostrarlos al salir del bicle
 
 
