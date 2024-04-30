@@ -51,7 +51,7 @@ else:
 #forma operador alternario
 a=2
 b=36
-resultado= "A es mayor" if a>b else("B es mayor"if b>a else "son igaule")
+resultado= "A es mayor" if a>b else("B es mayor"if b>a else "son iguale") #en alternario no se puede usar el "ELIF"
 print(resultado)
 
 

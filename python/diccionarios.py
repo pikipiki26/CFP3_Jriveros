@@ -5,13 +5,13 @@
 # # dic_vacio = {}
 # # print(type(dic_vacio))
 
-# # alumno = {
-# #     "nombre": "Ronal",
-# #     "edad" : 15,
-# #     "sexo" : "Masculino",
-# #     "direccion" : "Humberto Primo 2252"
-# # }
-# # print(alumno)
+alumno = {
+    "nombre": "Ronal",
+    "edad" : 15,
+    "sexo" : "Masculino",
+    "direccion" : "Humberto Primo 2252"
+}
+print(alumno)
 
 # #Modificar valores de alumno mediante su clave
 # # alumno["nombre"]="Daivis"
