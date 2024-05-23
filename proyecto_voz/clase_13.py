@@ -5,8 +5,6 @@
 #pip install setuptools
 #pip install pyaudio
 
-
-
 import speech_recognition as sr
 #creamos instancia de recognizer,que es la clase principal para reconocimiento de voz
 
