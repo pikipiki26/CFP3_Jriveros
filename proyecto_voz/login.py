@@ -24,19 +24,17 @@ root.geometry("300x250")#le asigno las medidas de mis ventana
 root.config(bg="blue")#aca le asigno un color de fondo
 
 #instanciamos tambien la palabra (maiframe)
-maiframe= Frame(root)#
-maiframe.grid(row=0,column=0 ,padx=20,pady=20)# le instancio en donde quiro posicionarlo
+maiframe= Frame(root)# le pasamos la ventana prncipal 
+maiframe.grid(row=0,column=0 ,padx=20,pady=20)# le instancio en donde quiro posicionarlo en columnas y fials( siempre indicar donde posionarlo)
 maiframe.config(width=250,height=230)#instanciamos un espaciado alto y bajo
 
 #instanciamos tambien la palabra (label)
 titulo= Label(maiframe,text="login de usuario",font=("arial",24))#
 titulo.grid(column=0,row=0,columnspan=2,pady=10)#instancio donde quiero posicionsrlo
 
-
 #elementos label y entry  usuario 
 nombrelabel=Label(maiframe, text=("usuario: "))
 nombrelabel.grid(column=0,row=1,sticky=W,pady=5)
-
 
 #input usuario
 nombreEntry=Entry(maiframe,width=30)
