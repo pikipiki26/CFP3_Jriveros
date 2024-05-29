@@ -50,7 +50,7 @@
 
 
 #crea tabla (ejecuta la funcion crear_tabla)
-crear_table()
+#crear_table()
 # insertar_usuario("JESI","2343")
 # insertar_usuario("MAXI","2585JM")
 # insertar_usuario("MILI","PIKI52")
