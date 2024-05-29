@@ -8,8 +8,8 @@ from tkinter import ttk
 
 ventana= Tk()#HAGO instanciacion con la palabra (ventana)
 ventana.title("PRODUCTOS")#asigna un titulo a la  ventana principal
-ventana.geometry("800x800")#le asigno las medidas de mi ventana
-ventana.config(bg="red")
+ventana.geometry("500x500")#le asigno las medidas de mi ventana
+ventana.config(bg="white")
 
 # maiframe= Frame(ventana)# le pasamos la ventana prncipal
 # maiframe.grid(row=0,column=0 ,padx=50,pady=50)# le instancio en donde quiro posicionarlo en columnas y fials
@@ -17,7 +17,7 @@ ventana.config(bg="red")
 
 #HINTANCIO LA PALABRA (LABEL)
 frame= LabelFrame(ventana,text="PRODUCTOS REGISTRADOS",font=("arial",24))
-frame.grid(column=0,row=0,columnspan=2,pady=10)#instancio donde quiero posicionsrlo
+frame.grid(column=0,row=0,columnspan=2,pady=1)#instancio donde quiero posicionsrlo
 
 
 #elementos label y entry  usuario
@@ -51,13 +51,13 @@ stockEntry.grid(column=1,row=4,pady=5)
 
 #BOTON
 IngresarBTN= Button(frame,text=("INGRESAR"))
-IngresarBTN.grid(column=0,row=5,columnspan=2,pady=20)
+IngresarBTN.grid(column=0,row=5,columnspan=2)
 
 AñadirBTN= Button(frame,text=("AÑADIR"))
-AñadirBTN.grid(column=1,row=5,columnspan=5,pady=20)
+AñadirBTN.grid(column=1,row=5,columnspan=5)
 
 ModificarBTN= Button(frame,text=("MODIFICAR"))
-ModificarBTN.grid(column=2,row=5,columnspan=3,pady=20)
+ModificarBTN.grid(column=2,row=5,columnspan=3)
 
 
 grilla=ttk.Treeview(height=10,columns=2)#un contenedor donde muestra todo los registros
