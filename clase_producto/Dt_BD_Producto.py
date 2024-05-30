@@ -36,18 +36,18 @@ def insertar_Productos(producto,proovedor,cantidad,descripcion):
     
 crear_table()
 insertar_Productos("camisas","estilo inico",50,"prendas informal") 
-# 
-# 
-# def run_query(query,parameters=()):
-#     with sqlite3.connect(db_nombre) as conn:
-#     cursor=    
+insertar_Productos("short"," estilo unico",30,"algodon")
+insertar_Productos("camperas","estilo unico",50,"material resistente")
+insertar_Productos("zapatos","estilo unico",20,"bellisimas")
+ 
 
-# def obtener_producto():
-#     query= SELECT * FROM  productos ORDER BY nombre DESC'
-
-
-# def insertar_Productos(producto,proovedor,cantidad,descripcion):
-#     query= INSERT INTO producto VALUES (NULL,?,?,?,?)
-#     parameters=(producto,proovedor,cantidad,descripcion)
-#     run_query(query,parameters)                                   
+def obtener_productos():
+    conn=conectar()
+    cursor=conn.cursor()
+    cursor.execute('''
+                  SELECT * FROM productos ORDER BY producto DESC'
+    ''') 
+    producto_encontrado= cursor()
+    conn.close()
+    return producto_encontrado is not None                                  
 
