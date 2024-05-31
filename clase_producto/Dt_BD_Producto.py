@@ -2,9 +2,10 @@
 
 import sqlite3
 
+base_de_d="productos_bd.db"
 #conectar a la base de datos de sqlite
 def conectar():
-    conn= sqlite3.connect("productos_bd")
+    conn= sqlite3.connect(base_de_d)
     return conn
 
 #CREAR TABLA DE PRODUCTOS SI NO EXISTE
@@ -34,20 +35,17 @@ def insertar_Productos(producto,proovedor,cantidad,descripcion):
     conn.close()
 
     
-crear_table()
-insertar_Productos("camisas","estilo inico",50,"prendas informal") 
-insertar_Productos("short"," estilo unico",30,"algodon")
-insertar_Productos("camperas","estilo unico",50,"material resistente")
-insertar_Productos("zapatos","estilo unico",20,"bellisimas")
+# crear_table()
+# insertar_Productos("camisas","estilo inico",50,"prendas informal") 
+# insertar_Productos("short"," estilo unico",30,"algodon")
+# insertar_Productos("camperas","estilo unico",50,"material resistente")
+# insertar_Productos("zapatos","estilo unico",20,"bellisimas")
  
 
 def obtener_productos():
-    conn=conectar()
-    cursor=conn.cursor()
-    cursor.execute('''
-                  SELECT * FROM productos ORDER BY producto DESC'
-    ''') 
-    producto_encontrado= cursor()
-    conn.close()
-    return producto_encontrado is not None                                  
+    quary= "SELECT * FROM productos ORDER BY producto DESC"
+    db_row=conectar(quary)
+    return db_row
+
+                                  
 

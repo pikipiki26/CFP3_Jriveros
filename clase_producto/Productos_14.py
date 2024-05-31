@@ -4,6 +4,44 @@
 from tkinter import*
 from tkinter import messagebox
 from tkinter import ttk
+from Dt_BD_Producto import obtener_productos
+
+
+
+def validar_datos():
+    return len(productoEntry.get())!=0 and len(cantidadEntry.get())!=0
+
+
+#metodos de agregar productos
+def agregar_producto():
+    from  Dt_BD_Producto import insertar_Productos
+    if validar_datos():
+        producto = productoEntry.get()
+        sector = sectorEntry.get()
+        cantidad = cantidadEntry.get()
+        stock = stockEntry.get()
+        insertar_Productos(producto,sector,cantidad,stock)
+#limpiamos los campos de entradas (inicio:fin)
+        productoEntry.delete(0,END)
+        sectorEntry.delete(0,END)
+        cantidadEntry.delete(0,END)
+        stockEntry.delete(0,END)
+    else:
+        print("todos los campos son requeridos")
+    obtener_producto()
+
+
+def obtener_producto():
+    from Dt_BD_Producto import obtener_productos
+    #obtener todas las filas actualizadas de mi tabla
+    grabados= grilla.get_children()
+    for elementos in grabados:
+        grilla.tree.delete(elementos)
+        #consulto los datos #==> llamar la funcion obtener_productos para obtener los productos de la DB(BASE DATOS)
+    productos=obtener_productos()
+    for row in productos:
+        grilla.insert('',0,text=row[1],values=row[3])    
+
 
 
 ventana= Tk()#HAGO instanciacion con la palabra (ventana)
@@ -38,8 +76,8 @@ sectorEntry.grid(column=1,row=2,pady=5)
 cantidadlabel=Label(frame, text=("CANTIDAD: "))
 cantidadlabel.grid(column=0,row=3,sticky=W,pady=5)
 #input cantidad
-cantiadEntry=Entry(frame,width=30)
-cantiadEntry.grid(column=1,row=3,pady=5)
+cantidadEntry=Entry(frame,width=30)
+cantidadEntry.grid(column=1,row=3,pady=5)
 
 #elementos label y entry  usuario
 Descripcionlabel=Label(frame, text=("DESCRIPCION: "))
@@ -50,7 +88,7 @@ stockEntry.grid(column=1,row=4,pady=5)
 
 
 #BOTON
-IngresarBTN= Button(frame,text=("INGRESAR"))
+IngresarBTN= Button(frame,text=("INGRESAR"),command=agregar_producto)
 IngresarBTN.grid(column=0,row=5,columnspan=2)
 
 AñadirBTN= Button(frame,text=("AÑADIR"))
@@ -66,6 +104,5 @@ grilla.grid(column=0,row=6)
 grilla.heading("#0",text="PRODUCTO")
 grilla.heading("#1",text="CANTIDAD")
 
-
-
+obtener_productos()
 ventana.mainloop()
