@@ -28,20 +28,29 @@ def agregar_producto():
         stockEntry.delete(0,END)
     else:
         print("todos los campos son requeridos")
-    obtener_producto()
+    obtener_productos()
 
 
-def obtener_producto():
+def obtener_productos():
     from Dt_BD_Producto import obtener_productos
     #obtener todas las filas actualizadas de mi tabla
     grabados= grilla.get_children()
     for elementos in grabados:
-        grilla.tree.delete(elementos)
+        grilla.delete(elementos)
         #consulto los datos #==> llamar la funcion obtener_productos para obtener los productos de la DB(BASE DATOS)
     productos=obtener_productos()
     for row in productos:
-        grilla.insert('',0,text=row[1],values=row[3])    
+        grilla.insert('',0,text=row[1],values=row[3])
 
+
+
+def eliminar_productos():
+    from Dt_BD_Producto import eliminar_producto
+   
+    grilla.item(grilla.selection())
+   
+    producto=grilla.item(grilla.selection())         
+    eliminar_producto(producto)
 
 
 ventana= Tk()#HAGO instanciacion con la palabra (ventana)
@@ -91,11 +100,11 @@ stockEntry.grid(column=1,row=4,pady=5)
 IngresarBTN= Button(frame,text=("INGRESAR"),command=agregar_producto)
 IngresarBTN.grid(column=0,row=5,columnspan=2)
 
-AñadirBTN= Button(frame,text=("AÑADIR"))
-AñadirBTN.grid(column=1,row=5,columnspan=5)
+EliminarBTN= Button(frame,text=("ELIMINAR"),command=eliminar_productos)
+EliminarBTN.grid(column=1,row=5,columnspan=5)
 
-ModificarBTN= Button(frame,text=("MODIFICAR"))
-ModificarBTN.grid(column=2,row=5,columnspan=3)
+ActualizarBTN= Button(frame,text=("ACTUALIZAR"))
+ActualizarBTN.grid(column=2,row=5,columnspan=3)
 
 
 grilla=ttk.Treeview(height=10,columns=2)#un contenedor donde muestra todo los registros
