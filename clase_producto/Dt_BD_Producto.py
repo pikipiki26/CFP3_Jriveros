@@ -35,9 +35,12 @@ def obtener_productos():
     db_row=conectar(query)
     return db_row
 
-def eliminar_producto(producto):
+def eliminar_productos(producto):
     query='DELETE FROM productos where producto=?'
     conectar(query,(producto,))
+
+def actualizar_productos():
+    pass   
 
     
 crear_table()

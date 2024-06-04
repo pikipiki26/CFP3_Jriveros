@@ -45,12 +45,34 @@ def obtener_productos():
 
 
 def eliminar_productos():
-    from Dt_BD_Producto import eliminar_producto
+    from Dt_BD_Producto import eliminar_productos
    
+    item=grilla.item(grilla.selection())
+
+    producto = item['text']
+    eliminar_productos(producto)
+    obtener_productos()
+
+def actualizar_productos():
     grilla.item(grilla.selection())
-   
-    producto=grilla.item(grilla.selection())         
-    eliminar_producto(producto)
+#obtener los nombrre del productos
+    producto=grilla.item(grilla.selection())
+    stock_viejo=grilla.item(grilla.selection())
+#crear una nueva ventana para actualizar el producto
+    Toplevel=Tk()
+    ventana_actualizar= Toplevel
+    ventana_actualizar.title= "actualizar producto"
+
+    productolabel=Label(ventana_actualizar, text="nombre actual").grid(row=0,column=1)
+    productoEntry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=producto),state="readonly").grid(row=0,column=2)
+#Etiqueta y campo para el nuevo nombre
+
+    Label(ventana_actualizar,text="nombre nuevo: ").grid(row=1, column=1)
+    producto_nuevo=Entry(ventana_actualizar)
+    producto_nuevo.grid(row=1,column=2)
+
+     
+
 
 
 ventana= Tk()#HAGO instanciacion con la palabra (ventana)
@@ -63,8 +85,8 @@ ventana.config(bg="white")
 # maiframe.config(width=500,height=500)#instanciamos un espaciado de ancho y lago
 
 #HINTANCIO LA PALABRA (LABEL)
-frame= LabelFrame(ventana,text="PRODUCTOS REGISTRADOS",font=("arial",24))
-frame.grid(column=0,row=0,columnspan=2,pady=1)#instancio donde quiero posicionsrlo
+frame= LabelFrame(ventana,text="REGISTRAR PRODUCOS",font=("arial",24))
+frame.grid(column=0,row=0,columnspan=4,pady=1)#instancio donde quiero posicionsrlo
 
 
 #elementos label y entry  usuario
@@ -103,7 +125,7 @@ IngresarBTN.grid(column=0,row=5,columnspan=2)
 EliminarBTN= Button(frame,text=("ELIMINAR"),command=eliminar_productos)
 EliminarBTN.grid(column=1,row=5,columnspan=5)
 
-ActualizarBTN= Button(frame,text=("ACTUALIZAR"))
+ActualizarBTN= Button(frame,text=("ACTUALIZAR"),command=actualizar_productos)
 ActualizarBTN.grid(column=2,row=5,columnspan=3)
 
 
