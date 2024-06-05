@@ -14,7 +14,7 @@ def validar_datos():
 
 #metodos de agregar productos
 def agregar_producto():
-    from  Dt_BD_Producto import insertar_Productos
+    from  Dt_BD_Producto import insertar_Productos #importamos los produstos desde la base de datos sqlite para poder validarlos
     if validar_datos():
         producto = productoEntry.get()
         sector = sectorEntry.get()
