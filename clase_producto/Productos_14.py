@@ -55,34 +55,51 @@ def eliminar_productos():
 
 def actualizar_productos():
     grilla.item(grilla.selection())
-#obtener los nombrre del productos
+
+#obtener los nombre del productos
     producto=grilla.item(grilla.selection())
     stock_viejo=grilla.item(grilla.selection())
+
 #crear una nueva ventana para actualizar el producto
     Toplevel=Tk()
     ventana_actualizar= Toplevel
     ventana_actualizar.title= "actualizar producto"
 
-    productolabel=Label(ventana_actualizar, text="Producto actual").grid(row=0,column=1)
-    productoEntry=Entry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=producto),state="readonly").grid(row=0,column=2)
+    item=grilla.item(grilla.selection())
+
+    producto_actual=item["text"]
+    cantidad_actual=item["values"][0]
+
+    producto_viejo=Label(ventana_actualizar, text="Producto actual").grid(row=0,column=1)
+    producto_viejo=Entry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=producto_actual),state="readonly").grid(row=0,column=2)
 
      #Etiqueta y campo para el nuevo nombre
     Label(ventana_actualizar,text="Producto nuevo: ").grid(row=1, column=1)
     producto_nuevo=Entry(ventana_actualizar)
     producto_nuevo.grid(row=1,column=2)
     
-    #etiwueta y campo de entrada para mostrar la cantidad 
-    cantidadlabel=Label(ventana_actualizar,text="cantidad  actual: ").grid(row=2,column=1)
-    cantidadEntry=Entry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=producto),state="readonly").grid(row=2,column=2)
-    #etiqueta y campo de entrada para el nuevo stock
+    #etiwueta y campo de entrada para mostrar la cantidad viejo
+    Cantidad_viejo=Label(ventana_actualizar,text="cantidad  actual: ").grid(row=2,column=1)
+    Cantidad_viejo=Entry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=cantidad_actual),state="readonly").grid(row=2,column=2)
 
+
+    #etiqueta y campo de entrada para el nuevo cantidad de stock nuevo
     Label(ventana_actualizar,text="Cantidad nuevo: ").grid(row=3, column=1)
     Cantidad_nuevo=Entry(ventana_actualizar)
     Cantidad_nuevo.grid(row=3,column=2)
 
     #BOTON PARA ACTUALIZAR EL PRODUCTO CON LOS NUEVOS VALORES
+    ActualizarBTN=Button(ventana_actualizar,text=("Actualizar"), command=lambda:actualizar_productos(producto_nuevo.get(),producto_actual,Cantidad_nuevo.get(),Cantidad_viejo))## LAMBDA ES UNA FORMAS DE ECRIBIR FUNCIONES ANONIMAS)
+    ActualizarBTN.grid(row=4,column=2,sticky=W)
 
-    ActualizarBTN=Button(ventana_actualizar,text="Actualizar", command=actualizar_productos).grid(row=4,column=2,sticky=W)
+
+def actualizar_productos(producto_nuevo,producto_actual,Cantidad_nuevo,Cantidad_viejo):
+    from Dt_BD_Producto import actualizar_productos,obtener_productos
+    actualizar_productos(producto_nuevo,producto_actual,Cantidad_nuevo,Cantidad_viejo)
+
+    #ventana_actualizar.destroy()
+
+    obtener_productos()
     
 
      

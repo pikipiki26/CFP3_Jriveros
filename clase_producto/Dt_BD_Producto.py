@@ -39,8 +39,11 @@ def eliminar_productos(producto):
     query='DELETE FROM productos where producto=?'
     conectar(query,(producto,))
 
-def actualizar_productos():
-    pass   
+def actualizar_productos(producto_nuevo,producto_actual,cantidad_nuevo,cantidad_actual):
+    query='UPDATE productos set producto = ? , cantidad = ? where producto = ? and cantidad = ?'
+    parameters=(producto_nuevo,cantidad_nuevo,producto_actual,cantidad_actual)
+    conectar(query,parameters)
+
 
     
 crear_table()
