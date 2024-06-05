@@ -63,13 +63,27 @@ def actualizar_productos():
     ventana_actualizar= Toplevel
     ventana_actualizar.title= "actualizar producto"
 
-    productolabel=Label(ventana_actualizar, text="nombre actual").grid(row=0,column=1)
-    productoEntry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=producto),state="readonly").grid(row=0,column=2)
-#Etiqueta y campo para el nuevo nombre
+    productolabel=Label(ventana_actualizar, text="Producto actual").grid(row=0,column=1)
+    productoEntry=Entry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=producto),state="readonly").grid(row=0,column=2)
 
-    Label(ventana_actualizar,text="nombre nuevo: ").grid(row=1, column=1)
+     #Etiqueta y campo para el nuevo nombre
+    Label(ventana_actualizar,text="Producto nuevo: ").grid(row=1, column=1)
     producto_nuevo=Entry(ventana_actualizar)
     producto_nuevo.grid(row=1,column=2)
+    
+    #etiwueta y campo de entrada para mostrar la cantidad 
+    cantidadlabel=Label(ventana_actualizar,text="cantidad  actual: ").grid(row=2,column=1)
+    cantidadEntry=Entry(ventana_actualizar,textvariable=StringVar(ventana_actualizar,value=producto),state="readonly").grid(row=2,column=2)
+    #etiqueta y campo de entrada para el nuevo stock
+
+    Label(ventana_actualizar,text="Cantidad nuevo: ").grid(row=3, column=1)
+    Cantidad_nuevo=Entry(ventana_actualizar)
+    Cantidad_nuevo.grid(row=3,column=2)
+
+    #BOTON PARA ACTUALIZAR EL PRODUCTO CON LOS NUEVOS VALORES
+
+    ActualizarBTN=Button(ventana_actualizar,text="Actualizar", command=actualizar_productos).grid(row=4,column=2,sticky=W)
+    
 
      
 
