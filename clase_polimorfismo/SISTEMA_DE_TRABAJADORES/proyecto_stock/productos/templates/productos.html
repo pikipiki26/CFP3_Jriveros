@@ -56,9 +56,52 @@
           </div>
         </div>
       </nav>
-    {% for producto in productos %}
-        {{producto}}
-    {% endfor %}
+    <div class="container">
+      <h1 class="tex-center m-4">Listado de productos</h1>
+      <table class="table" table-bordered table-striped tex-center>
+        <thead>
+          <tr>
+              <th class="bg-primary text-white">ID</th>
+              <th class="bg-primary text-white">NOMBRE</th>
+              <th class="bg-primary text-white">DESCRIPCION</th>
+              <th class="bg-primary text-white">PRECIO</th>
+              <th class="bg-primary text-white">STOCK</th>
+              <th class="bg-primary text-white">ACCIONES</th>
+          </tr> 
+          <tbody>
+            {% for producto in productos%}
+            <tr>
+              <td>{{producto.id}}</td>
+              <td>{{producto.nombre}}</td>
+              <td>{{producto.descripcion}}</td>
+              <td>{{producto.precio}}</td>
+              <td>{{producto.stock}}</td>
+              <td>
+                <a href="{% url 'Editar_producto', producto.id %}" type="button" class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-secondary">Eliminar</button>
+              </td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </thead>
+      </table>
+      <form action="{% url 'crear_producto'%}" method="POST" class="form-group">
+        {% csrf_token %}
+        <label for="nombre">nombre:</label>
+        <input class="form-control"  type="text" name="nombre">
+
+        <label for="descripcion">descripcion:</label>
+        <input class="form-control" type="text" name="descripcion">
+
+        <label for="precio">precio:</label>
+        <input class="form-control"  type="number" name="precio">
+
+        <label for="stock">stock:</label>
+        <input class="form-control"  type="number" name="stock">
+
+        <button type="submit" class="btn btn-warning">Crear Producto</button>
+      </form>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
